@@ -1,10 +1,11 @@
 {
   "name": "localmemory",
-  "version": "1.0.8",
+  "version": "1.0.1",
   "description": "localStorage和sessionStorage的封装",
   "main": "build/bundle.js",
   "types": "build/types/main.d.ts",
   "scripts": {},
+  "homepage": "https://github.com/ephemeral98/localMemory/blob/dev/README.md",
   "repository": {
     "type": "git",
     "url": "https://github.com/ephemeral98/localMemory"
