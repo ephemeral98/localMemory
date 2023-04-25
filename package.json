@@ -1,0 +1,19 @@
+{
+  "name": "localmemory",
+  "version": "1.0.8",
+  "description": "localStorage和sessionStorage的封装",
+  "main": "build/bundle.js",
+  "types": "build/types/main.d.ts",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ephemeral98/localMemory"
+  },
+  "keywords": [
+    "barry",
+    "localStorage",
+    "sessionStorage"
+  ],
+  "author": "",
+  "license": "ISC"
+}
