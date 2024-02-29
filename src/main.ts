@@ -4,6 +4,10 @@ interface IMemory {
   expired?: string | number; // 设置过期时间(秒级)(3600表示一小时后过期)
 }
 
+interface IdefaultOparams extends IMemory {
+  startTime: number;
+}
+
 /**
  * sessionStorage 和 localStorage 的2此封装
  * @param {string} type 存储方式：sessionStorage、localStorage
@@ -14,6 +18,9 @@ class Storage {
   private memory;
 
   constructor(type) {
+    if (typeof window === 'undefined') {
+      return;
+    }
     if (type === 'localStorage') {
       this.memory = window.localStorage;
     } else {
@@ -27,7 +34,10 @@ class Storage {
    * @author gzq
    */
   setItem(params: IMemory) {
-    const defaultOParams: any = {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const defaultOParams: IdefaultOparams = {
       name: '',
       value: '',
       expired: '', // 秒级单位（startTime + expired）
@@ -56,6 +66,9 @@ class Storage {
    * @author gzq
    */
   getItem(name: string) {
+    if (typeof window === 'undefined') {
+      return '';
+    }
     let item = this.memory.getItem(name);
     if (!item || item == 'null' || item == 'undefined') {
       return;
@@ -90,6 +103,9 @@ class Storage {
    * @author gzq
    */
   removeItem(name: string) {
+    if (typeof window === 'undefined') {
+      return;
+    }
     this.memory.removeItem(name);
   }
   /**
@@ -98,6 +114,9 @@ class Storage {
    * @author gzq
    */
   clear() {
+    if (typeof window === 'undefined') {
+      return;
+    }
     this.memory.clear();
   }
 }
