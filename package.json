@@ -1,6 +1,6 @@
 {
   "name": "localmemory",
-  "version": "1.0.4",
+  "version": "1.1.2",
   "description": "localStorage和sessionStorage的封装",
   "main": "build/bundle.js",
   "types": "build/types/main.d.ts",
