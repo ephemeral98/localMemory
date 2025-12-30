@@ -12,7 +12,7 @@ interface IdefaultOparams extends IMemory {
  * sessionStorage 和 localStorage 的2此封装
  * @param {string} type 存储方式：sessionStorage、localStorage
  * @returns {function} storage
- * @author gzq
+ * @author Barry
  */
 class Storage {
   private memory;
@@ -31,9 +31,9 @@ class Storage {
    * 设置缓存
    * @param {object} params
    * name: 键、value: 值、expired: 过期时间
-   * @author gzq
+   * @author Barry
    */
-  setItem(params: IMemory) {
+  setItem(params: IMemory): boolean {
     if (typeof window === 'undefined') {
       return;
     }
@@ -58,16 +58,17 @@ class Storage {
         options.value = JSON.stringify(options.value);
       }
       this.memory.setItem(options.name, options.value);
+      return true;
     }
   }
   /**
    * 取值
    * @param {string} name 键
-   * @author gzq
+   * @author Barry
    */
-  getItem(name: string) {
+  getItem<T>(name: string): T {
     if (typeof window === 'undefined') {
-      return '';
+      return null;
     }
     let item = this.memory.getItem(name);
     if (!item || item == 'null' || item == 'undefined') {
@@ -85,9 +86,9 @@ class Storage {
       const now = new Date().getTime() / 1000;
       //何时将值取出减去刚存入的时间，与item.expires比较，如果大于就是过期了，如果小于或等于就还没过期
       if (now - item.startTime > item.expired) {
-        //缓存过期，清除缓存，返回false
+        //缓存过期，清除缓存，返回null
         this.memory.removeItem(name);
-        return false;
+        return null;
       } else {
         //缓存未过期，返回值
         return item.value;
@@ -100,24 +101,26 @@ class Storage {
   /**
    * 移除缓存
    * @param {string} name 键
-   * @author gzq
+   * @author Barry
    */
-  removeItem(name: string) {
+  removeItem(name: string): boolean {
     if (typeof window === 'undefined') {
-      return;
+      return false;
     }
     this.memory.removeItem(name);
+    return true;
   }
   /**
    * 移除全部缓存
    * @param {string} name 键
-   * @author gzq
+   * @author Barry
    */
-  clear() {
+  clear(): boolean {
     if (typeof window === 'undefined') {
-      return;
+      return false;
     }
     this.memory.clear();
+    return true;
   }
 }
 
