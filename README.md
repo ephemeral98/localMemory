@@ -18,6 +18,11 @@ localMemory.setItem({ name: 'account', value: 'barry', expired: 3600 * 24 * 2 })
 
 ### 获取
 ```js
+interface IParam {
+  a: number;
+}
+
 import { localMemory } from 'localmemory';
-localMemory.getItem('account')
+const res = localMemory.getItem<IParam>('account')
+console.log(res);
 ```

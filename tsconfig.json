@@ -20,14 +20,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@css/*": ["./src/assets/css/*"],
-      "@img/*": ["./src/assets/img/*"],
-      "@cps/*": ["./src/components/*"],
-      "@store/*": ["./src/store/*"],
-      "@contApi/*": ["./src/contractsApi/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@tools/*": ["./src/tools/*"],
-      "@bpMath/*": ["./src/bpMath/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
